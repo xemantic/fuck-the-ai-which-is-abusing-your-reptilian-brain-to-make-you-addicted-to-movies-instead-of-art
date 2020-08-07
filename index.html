@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CHANGE_ME: this label indicates values to change, feel free to delete these comments once the values are adjusted -->
+
+  <!-- CHANGE_ME: replace the metadata below with your content -->
+  <title>Fuck the AI which is abusing your reptilian brain to make you addicted to movies instead of art</title>
+  <meta name="description"  content="A template of a website, providing experience similar to video streaming platforms, but this time featuring art projects" />
+  <meta name="keywords"     content="fuck, AI" />
+  <meta name="author"       content="Numerius Negidius" />
+
+  <!-- CHANGE_ME: Here is what will be visible when your content is shared on social media platforms -->
+  <meta property="og:title"         content="Fuck the AI which is abusing your reptilian brain to make you addicted to movies instead of art" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:url"           content="https://xemantic.github.io/fuck-the-ai-which-is-abusing-your-reptilian-brain-to-make-you-addicted-to-movies-instead-of-art" />
+  <!-- CHANGE_ME: preferred image size 1200x630 -->
+  <meta property="og:image"         content="https://xemantic.github.io/fuck-the-ai-which-is-abusing-your-reptilian-brain-to-make-you-addicted-to-movies-instead-of-art/images/fuck-the-ai-site-thumbnail.jpg" />
+  <meta property="og:image:type"    content="image/jpeg" />
+  <meta property="og:image:width"   content="1200" />
+  <meta property="og:image:height"  content="630" />
+  <meta property="og:image:alt"     content="FUCK THE AI logo" />
+  <meta property="og:description"   content="A template of a website, providing experience similar to video streaming platforms, but this time featuring art projects" />
+  <meta property="og:locale"        content="en_US" />
+
+  <!-- CHANGE_ME: you can prepare your favicon with https://realfavicongenerator.net/ and replace these files with yours -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <style>
+    :root {
+      /*
+        CHANGE_ME: Here you can provide custom settings, it's ok to delete them as well
+        if you don't need them as they all have defaults.
+       */
+      --background: black;
+      --selection-color: rgb(220, 34, 240, .4);
+      --logo-fade-in-duration: 9s;
+
+      --alpha-background-strong: rgba(0, 0, 0, .618);
+      --alpha-background-subtle: rgba(0, 0, 0, .25);
+
+      --font-size-base: 15px;
+
+      --content-text-color: white;
+      --content-text-align: justify;
+      --content-font-family: "Arsenal", sans-serif;
+
+      --heading-text-color: var(--content-text-color);
+      --heading-text-align: center;
+      --heading-font-family: "Bebas Neue", cursive;
+
+      --footer-text-color: var(--content-text-color);
+      --footer-font-family: var(--content-font-family);
+
+      --miniature-title-align: right;
+      --miniature-title-color: var(--heading-text-color);
+      --miniature-title-font-family: var(--heading-font-family);
+
+      --project-title-align: right;
+
+      --paragraph-spacing: .618rem;
+      --heading-margin-bottom: .5rem;
+
+      --miniature-title-alpha-background: var(--alpha-background-strong);
+      --miniature-title-height: calc(var(--golden-ratio-height-shorter) * .236);
+      --miniature-title-padding: calc(var(--golden-ratio-height-shorter) * 0.0618);
+      --miniature-title-font-size: calc(var(--golden-ratio-height-shorter) * .13);
+
+      --content-padding-base: .5vw;
+      --content-padding-increment: 1vw;
+      --content-padding: calc(var(--content-padding-base) + var(--content-padding-increment));
+      --content-background-text: var(--background-strong);
+      --content-background-media: var(--background-subtle);
+
+      --font-size-increment: 1vw;
+      --font-size: calc(var(--font-size-base) + var(--font-size-increment));
+    }
+    html {
+      box-sizing: border-box;
+      background: var(--background);
+    }
+    body {
+      /* prevents from future resizing of the background canvas and from flickering when content appears */
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    body, h1, h2, h3, h4, h5, h6, p, ol, ul, blockquote {
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      height: var(--golden-ratio-height-longer);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    header .logo {
+      width: var(--golden-ratio-width-longer);
+      opacity: 0;
+      animation: fade-in var(--logo-fade-in-duration) ease-in-out;
+      animation-fill-mode: forwards; /* will keep the opacity */
+      z-index: var(--z-index-logo);
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    #shader-background {
+      background: var(--background); /* covers everything */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: var(--z-index-background-layer);
+    }
+    .hidden {
+      display: none;
+    }
+
+    // moving shadow: start (optional)
+    :root {
+      /* initial shadow values - later on supplied from mouse or touch events */
+      --shadow-x: 1.3vw;
+      --shadow-y: 1.3vw;
+      --shadow-blur-radius: .15vw;
+      --shadow-opacity: .8;
+
+      /* These variables are actually constants, not to be changed */
+      --golden-ratio-width-longer: 61.8vw;
+      --golden-ratio-width-shorter: 38.2vw;
+      --golden-ratio-height-longer: 61.8vh;
+      --golden-ratio-height-shorter: 38.2vh;
+      --z-index-logo: 4;
+      --z-index-background-layer: 3; /* initially background is covering everything */
+    }
+    .shadow {
+      filter: drop-shadow(var(--shadow-x) var(--shadow-y) var(--shadow-blur-radius) rgba(0, 0, 0, var(--shadow-opacity)));
+    }
+    // moving shadow: end
+  </style>
+  <script>
+    const scriptsToLoad = [];
+    const cssToLoad = [];
+
+    // adjustable settings: start
+    const MAIN_JS = "main.js";
+    addCss("main.css");
+
+    addCss("https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+    addCss("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+    const MAX_SHADOW_DROP = 5.0;
+    const MAX_BLUR_RADIUS = .9;
+    // adjustable settings: end
+
+    function addScript(src, extender) {
+      scriptsToLoad.push([src, extender]);
+    }
+
+    function addCss(src) {
+      cssToLoad.push(src);
+    }
+
+    const root = document.documentElement;
+
+    function handleMove(event) {
+      const x = (event.clientX - .5 * innerWidth) / innerWidth;
+      const y = (event.clientY - .5 * innerHeight) / innerWidth;
+      const distance = Math.sqrt((x * x) + (y * y));
+      root.style.setProperty("--shadow-x", (x * -MAX_SHADOW_DROP) + "vw");
+      root.style.setProperty("--shadow-y", (y * -MAX_SHADOW_DROP) + "vw");
+      root.style.setProperty("--shadow-blur-radius", ((distance * MAX_BLUR_RADIUS) + "vw"));
+    }
+    document.addEventListener("mousemove", handleMove, false);
+    document.addEventListener("touchmove", handleMove, false);
+
+    // now we have to fix chrome native image lazy loading which is still trying to download some
+    // images before the page emits load event
+    const supportsLazyLoad = ("loading" in document.createElement("img"));
+    const lazyLoadingProcessor = (supportsLazyLoad && window.MutationObserver) ? new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+          if (node.nodeName == "IMG" && node.loading && (node.loading == "lazy")) {
+            node.setAttribute("data-src", node.src);
+            node.src = "";
+          }
+        });
+      });
+    }) : null;
+
+    window.addEventListener("load", e => {
+      if (lazyLoadingProcessor) {
+        lazyLoadingProcessor.disconnect();
+      }
+      new LoopbackCanvas("shader-background", "loopback-shader");
+      const script = document.createElement("script");
+      script.src = MAIN_JS;
+      document.head.appendChild(script);
+    }, false);
+
+    // LoopbackCanvas: start
+    function m(a){var c=0;return function(){return c<a.length?{done:!1,value:a[c++]}:{done:!0}}}function p(a){return Error(a)}p.prototype=Object.create(Error.prototype);
+    function r(a,c,f,e){this.a=a;this.b=a.createTexture();a.bindTexture(a.TEXTURE_2D,this.b);a.texImage2D(a.TEXTURE_2D,0,a.RGBA,c,f,0,a.RGBA,e.HALF_FLOAT_OES,null);a.texParameteri(a.TEXTURE_2D,a.TEXTURE_MIN_FILTER,a.LINEAR);a.texParameteri(a.TEXTURE_2D,a.TEXTURE_MAG_FILTER,a.LINEAR);a.texParameteri(a.TEXTURE_2D,a.TEXTURE_WRAP_S,a.CLAMP_TO_EDGE);a.texParameteri(a.TEXTURE_2D,a.TEXTURE_WRAP_T,a.CLAMP_TO_EDGE);this.c=a.createFramebuffer();a.bindFramebuffer(a.FRAMEBUFFER,this.c);a.framebufferTexture2D(a.FRAMEBUFFER,
+    a.COLOR_ATTACHMENT0,a.TEXTURE_2D,this.b,0)}r.prototype.release=function(){this.a.bindFramebuffer(this.a.FRAMEBUFFER,this.c);this.a.deleteTexture(this.b);this.a.bindFramebuffer(this.a.FRAMEBUFFER,null);this.a.deleteFramebuffer(this.c)};function t(a,c,f){c=a.createShader(c);a.shaderSource(c,f);a.compileShader(c);if(!a.getShaderParameter(c,a.COMPILE_STATUS)){var e=String(a.getShaderInfoLog(c));console.log(e,f);a.deleteShader(c);return e}return c}
+    function u(a,c){var f=t(a,a.VERTEX_SHADER,"\nattribute vec2 V;\n//attribute vec2 aUV;\n//varying vec2 vUV;\n\nvoid main() {\n    gl_Position = vec4(V, 0.0, 1.0);\n    //vUV = aUV;\n}\n");c=t(a,a.FRAGMENT_SHADER,c);var e=a.createProgram();a.attachShader(e,f);a.attachShader(e,c);a.linkProgram(e);return e}function x(a){var c=a.createBuffer();a.bindBuffer(a.ARRAY_BUFFER,c);a.bufferData(a.ARRAY_BUFFER,new Float32Array([-1,1,1,1,-1,-1,1,-1]),a.STATIC_DRAW);return c}
+    function y(a,c,f,e){var d=new r(a,c,f,e);a=new r(a,c,f,e);return[d,a]}
+    window.LoopbackCanvas=function(a,c){function f(){v=performance.now()/1E3;if(d.width!==d.clientWidth||d.height!==d.clientHeight){d.width=d.clientWidth;d.height=d.clientHeight;b.viewport(0,0,b.canvas.width,b.canvas.height);var g=k;var l="undefined"!=typeof Symbol&&Symbol.iterator&&g[Symbol.iterator];g=l?l.call(g):{next:m(g)};for(l=g.next();!l.done;l=g.next())l.value.release();k=y(b,d.width,d.height,q);e()}b.useProgram(h);b.uniform1f(z,v);b.uniform1i(A,w);b.bindFramebuffer(b.FRAMEBUFFER,k[0].c);b.bindTexture(b.TEXTURE_2D,
+    k[1].b);b.drawArrays(b.TRIANGLE_STRIP,0,4);b.useProgram(n);b.bindFramebuffer(b.FRAMEBUFFER,null);b.bindTexture(b.TEXTURE_2D,k[0].b);b.drawArrays(b.TRIANGLE_STRIP,0,4);k.reverse();w++;requestAnimationFrame(f)}function e(){var g=Math.min(d.width,d.height);b.useProgram(h);b.uniform2f(B,d.width,d.height);b.uniform1f(C,g);b.useProgram(n);b.uniform2f(D,d.width,d.height);b.uniform1f(E,g)}var d=document.getElementById(a);a=document.getElementById(c).text.trim();d.width=d.clientWidth;d.height=d.clientHeight;
+    var b=d.getContext("webgl");if(!b)throw new p("webgl context not supported on supplied canvas element: "+d);var q=b.getExtension("OES_texture_half_float");if(!q)throw new p("OES_texture_half_float is required but not supported here");if(!b.getExtension("OES_texture_half_float_linear"))throw new p("OES_texture_half_float_linear is required but not supported here");var k=y(b,d.width,d.height,q),h=u(b,a),n=u(b,"\nprecision mediump float;\n\nuniform vec2 R;\nuniform sampler2D T;\nvarying vec2 vUV;\n\nvoid main() {\n    // vUV is equal to gl_FragCoord/uScreenResolution\n    // do some pixel shader related work\n    gl_FragColor = texture2D(T, gl_FragCoord.xy/R);\n}\n\n");
+    b.useProgram(h);a=b.getAttribLocation(h,"V");c=x(b);b.bindBuffer(b.ARRAY_BUFFER,c);b.vertexAttribPointer(a,2,b.FLOAT,!1,0,0);b.enableVertexAttribArray(a);b.viewport(0,0,b.canvas.width,b.canvas.height);var B=b.getUniformLocation(h,"R"),C=b.getUniformLocation(h,"D"),z=b.getUniformLocation(h,"T"),A=b.getUniformLocation(h,"F");b.useProgram(n);var D=b.getUniformLocation(n,"R"),E=b.getUniformLocation(n,"D");e();var w=0,v=0;f()};window.WebglLoopbackException=p;
+    // LoopbackCanvas: end
+  </script>
+  <script type="x-shader/x-fragment" id="loopback-shader">
+    #ifdef GL_ES
+    precision lowp float;
+    precision lowp int;
+    #endif
+
+    const float SHAPE_FACTOR = .013;
+    const float SHAPE_ANIMATION_SPEED = 2.0;
+    const float SHAPE_PERIOD_FACTOR = 40.0;
+    const float FADE_FACTOR = .995;
+    const float EXPANSION_FACTOR = 1.1;
+
+    #define iResolution R
+    #define iMinDimension D
+    #define iTime T
+    #define iFrame F
+    #define iChannel0 T0
+
+    uniform float T;
+    uniform vec2 R;
+    uniform float D;
+    uniform int F;
+    uniform sampler2D T0;
+
+    // Spectral Colour Scheme By Alan Zucconi www.alanzucconi.com
+    float saturate(float x) {
+      return min(1.0, max(0.0,x));
+    }
+    vec3 saturate (vec3 x) {
+      return min(vec3(1.,1.,1.), max(vec3(0.,0.,0.),x));
+    }
+    vec3 bump3y(vec3 x, vec3 yoffset) {
+      vec3 y = vec3(1.,1.,1.) - x * x;
+      y = saturate(y-yoffset);
+      return y;
+    }
+    vec3 spectral_zucconi6(float x) {
+
+      const vec3 c1 = vec3(3.54585104, 2.93225262, 2.41593945);
+      const vec3 x1 = vec3(0.69549072, 0.49228336, 0.27699880);
+      const vec3 y1 = vec3(0.02312639, 0.15225084, 0.52607955);
+
+      const vec3 c2 = vec3(3.90307140, 3.21182957, 3.96587128);
+      const vec3 x2 = vec3(0.11748627, 0.86755042, 0.66077860);
+      const vec3 y2 = vec3(0.84897130, 0.88445281, 0.73949448);
+
+      return
+      bump3y(c1 * (x - x1), y1) +
+      bump3y(c2 * (x - x2), y2);
+    }
+    vec3 zucconiPow(float x) {
+      vec3 z = spectral_zucconi6(x);
+      return vec3(
+      pow(z.r, 2.2),
+      pow(z.g, 2.2),
+      pow(z.b, 2.2)
+      );
+    }
+
+    float wave(in float value) {
+      return (sin(value) + 1.) * .5;
+    }
+
+    void main() {
+      vec2 uv = gl_FragCoord.xy / iResolution;
+      vec2 st = (gl_FragCoord.xy * 2. - iResolution) / iMinDimension;
+      vec2 expansion = st / iResolution * EXPANSION_FACTOR;
+      float angle = atan(st.x, st.y);
+      float dist = length(st - vec2(sin(iTime * .3), cos(iTime * .2)));
+      float outline = dist
+      + (wave(angle * 3. + iTime * 1.2) * .5 * sin(iTime * .4))
+      + (wave(angle * 7. + iTime * .9) * .3 * sin(iTime * -.7));
+
+      vec3 prevColor = texture2D(iChannel0, uv - expansion).rgb;
+      float luma = wave(
+      (outline * SHAPE_PERIOD_FACTOR)
+      - (iTime * SHAPE_ANIMATION_SPEED)
+      );
+      vec3 color = vec3(luma) * SHAPE_FACTOR * spectral_zucconi6(mod(dist - iTime * .3, 1.))
+      * step(dist, 1.3);
+      gl_FragColor = vec4(
+      prevColor * FADE_FACTOR
+      + color
+      , 1.);
+    }
+  </script>
+</head>
+<body>
+<script>
+  // installing the processor as early as possible, after the body is created
+  if (lazyLoadingProcessor) {
+    lazyLoadingProcessor.observe(document.body, {childList: true, subtree: true});
+  }
+</script>
+<header>
+  <!--
+    Contains just SVG logo of the project, which is embedded here to improve page loading time
+    after preparing your own SVG file, minify it with this tool:
+    https://jakearchibald.github.io/svgomg/
+    , and then paste it below. (remember to add CSS classes "logo shadow")
+   -->
+  <svg class="logo shadow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132.284 27.05">
+    <defs/>
+    <path fill="#fff" fill-rule="evenodd" d="M0 .372h10.93V4.13h-6.8v7.326h5.337v3.758H4.13v11.46H0zM18.935 27.05q-3.005 0-4.584-1.708-1.58-1.711-1.58-4.907V.372h4.135v20.365q0 1.352.541 1.955.546.6 1.563.6 1.013 0 1.558-.6.546-.603.546-1.955V.372h3.981v20.063q0 3.196-1.579 4.907-1.575 1.708-4.58 1.708zm14.914 0q-2.969 0-4.527-1.691-1.559-1.691-1.559-4.771V6.462q0-3.084 1.559-4.771Q30.88 0 33.849 0q2.968 0 4.527 1.69 1.562 1.688 1.562 4.772V9.24h-3.91V6.197q0-2.443-2.064-2.443-2.067 0-2.067 2.443v14.689q0 2.406 2.067 2.406 2.063 0 2.063-2.406v-4.019h3.911v3.72q0 3.08-1.562 4.772-1.559 1.69-4.527 1.69zM42.417.372h4.13v11.084L51.81.372h4.13l-4.92 9.657 4.995 16.644h-4.32L48.2 14.953l-1.654 3.34v8.38h-4.13zM67.212 4.13h-4.32V.372h12.774V4.13h-4.32v22.543h-4.134zM77.659.372h4.13V11.08h4.436V.372h4.13v26.301h-4.13V14.837h-4.436v11.836h-4.13zm15.78 0h11.27V4.13h-7.14v6.95h5.676v3.757h-5.676v8.078h7.14v3.758h-11.27zm22.84 0h5.598l4.283 26.301h-4.13l-.752-5.221v.074h-4.696l-.753 5.147h-3.832zm4.511 17.587l-1.844-13.002h-.074l-1.803 13.002zM128.154.372h4.13v26.301h-4.13z"/>
+  </svg>
+</header>
+<nav id="project-miniatures" class="miniatures hidden">
+  <a class="miniature"
+     href="#industria"
+     data-flickity-bg-lazyload="projects/002-industria/industria-miniature.jpg">
+    <h2>Industria</h2>
+  </a>
+  <a class="miniature"
+     href="#history-creative-code-berlin"
+     data-flickity-bg-lazyload="projects/001-ccb-history/ccb-history-miniature.jpg">
+    <h2>history.creativecode.berlin</h2>
+  </a>
+  <a class="miniature"
+     href="#xemantic"
+     data-flickity-bg-lazyload="projects/000-xemantic/negentropy-miniature.jpg">
+    <h2>xemantic</h2>
+  </a>
+</nav>
+<section id="projects" class="hidden">
+  <article id="industria">
+    <div class="media">
+      <div class="flickity">
+        <img class="medium" src="projects/002-industria/dazzle-ship1.jpg" loading="lazy" />
+        <img class="medium" src="projects/002-industria/Industria-Kazik_Pogoda-Generative-2020.jpg" loading="lazy" />
+      </div>
+    </div>
+    <div class="description">
+      <h2>Industria</h2>
+      <p class="intro">
+        The Industria project &mdash; an immersive art experience featuring the themes
+        of the second industrial revolution.
+      </p>
+      <p>See <a href="https://xemantic.com/ideas/industria/">the ideas we prepared for Industria</a>.
+      <p>
+        Stay tuned, we are building this experience now in Copenhagen! Many updates soon.
+      </p>
+    </div>
+  </article>
+  <article id="history-creative-code-berlin">
+    <div class="media">
+      <img class="medium" src="projects/001-ccb-history/ccb-history-miniature.jpg" loading="lazy" />
+    </div>
+    <div class="description">
+      <h2>history.creativecode.berlin</h2>
+      <p class="intro">
+        Visual archive of the projects shown during <a href="">Creative Code Berlin</a>
+        Meetups (<a href="">Stammtisch</a>).
+      </p>
+      <p>
+        Go to <a href="https://history.xemantic.com">history.creativecode.berlin</a>.
+      </p>
+    </div>
+  </article>
+  <article id="xemantic">
+    <div class="media">
+      <img class="medium" src="projects/000-xemantic/Kazik_Pogoda-Screenshot_from_2020-01-12 17-15-50.jpg" loading="lazy" />
+      <div class="caption">
+        The creatures of light under water.
+      </div>
+    </div>
+    <div class="description">
+      <h2>xemantic</h2>
+      <p class="intro">
+        The first website using this engine.
+      </p>
+      <p>
+        Visit <a href="https://xemantic.com">xemantic.com</a>
+      </p>
+    </div>
+  </article>
+</section>
+<section id="about" class="content-container hidden">
+  <h1>Fuck the AI which is abusing your reptilian brain to make you addicted to movies instead of art</h1>
+  <!-- just delete everything in this section and fill with your content -->
+  <img src="images/Negentropy-Kazik_Pogoda-Generative-2020.jpg"
+       alt="Negentropy, Kazik Pogoda, 2020"
+       class="left width-shorter"
+       loading="lazy" />
+  <!-- you can control the position of images -->
+  <p>
+    The form of presentation matters a lot for the experience of those who visit our websites.
+    Media streaming platforms like Netflix, YouTube or Instagram, putting high quality pictures
+    and videos first before conveying the meanings, are shaping the sensitivity of generations
+    surfing the web, while shifting the focus towards the culture of appearance and boosting
+    our narcissistic tendencies. The AI recommendation algorithms of these platforms are designed
+    to keep our attention span focused on them for as long as possible. It is achieved by exploiting
+    the addiction mechanisms of our brains.
+  </p>
+  <p>
+    The way AI is presented in Science-Fiction refers to a form of a dialogue between the human and
+    the machine &mdash; an agent with high intelligence, supposedly higher than ours. But what is
+    happening at the moment with AI or rather
+    machine learning is far away from this vision. Machines are rather trained to live in symbiosis
+    with our paleolithic emotions (recommendation systems), flawed sensorium (autonomous cars),
+    xenophobia and vengeance (homicide/genocide prevention).
+  </p>
+  <p>
+    The project was born out of the need to <q>fight back</q> these tendencies while hijacking the
+    aesthetics and experience of certain popular memeplexes. Letting everyone to easily wrap higher
+    ideas in visually appealing form. <strong>You can use it as a base of your website, online portfolio,
+    guided tour over your Vimeo videos. Maybe you want to build an online art gallery on top of it?</strong>
+  </p>
+  <h2>Radical Web Design</h2>
+  <p>
+    This project is using some radical web design concepts &mdash; golden ratio applied wherever
+    possible, webgl shader as a background
+    which will start rendering as soon as possible, lazy loading of resources whenever possible,
+    full screen animations during navigation,
+    fluid typography depending on the screen size, open composition not constrained by the screen
+    width, etc.
+  </p>
+  <p>
+    There is only one breaking point at 900px expanding images to the full screen width
+    in case of mobile screens and smaller tablets.
+  </p>
+  <img src="images/The_Body_Of_Noise-Kazik_Pogoda-Generative-2019.jpg"
+       alt="Negentropy, Kazik Pogoda, 2020"
+       class="right width-shorter"
+       loading="lazy" />
+  <h2>Descendant Projects</h2>
+  <p>
+    Above you can see the miniatures of projects which have been already built on top of this
+    template. I hope to see you projects among them.
+  </p>
+  <p>
+    This project is licensed under GPLv3, which means that it can be used to freely build open
+    source and personal projects. If you want to use it in commercial project, please contact
+    me. I want to be able to decide if the projects it will be used in are aligned with my values.
+  </p>
+  <h2>How to use this template?</h2>
+  <p>
+    Adjusting the project to own content requires minimal knowledge about HTML. I am always happy
+    to assist you and even build initial version of the website for you. Detailed instructions are
+    put in the comments of this HTML file and also on
+    <a href="">GitHub repository of this project</a>.
+  </p>
+</section>
+<footer class="shadow hidden">
+  <p>
+    <span class="heading-font">Fuck the AI ...</span> is licensed under
+    <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPLv3</a>,
+    It is heavily utilizing <a href="https://flickity.metafizzy.co/">Flickity</a> component, also
+    licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPLv3</a>.
+  </p>
+  <p>
+    Generative images courtesy of <a href="https://xemantic.com">xemantic.com</a>
+  </p>
+</footer>
+<canvas id="shader-background"></canvas>
+</body>
+</html>
