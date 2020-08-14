@@ -5,11 +5,11 @@
   --font-size-increment: 1vw;
   --font-size: calc(var(--font-size-base) + var(--font-size-increment));
 
-  --background-strong: rgba(0, 0, 0, .618);
-  --background-subtle: rgba(0, 0, 0, .25);
+  --alpha-background-strong: rgba(0, 0, 0, .618);
+  --alpha-background-subtle: rgba(0, 0, 0, .25);
 
-  --background-content: var(--background-strong);
-  --background-media: var(--background-subtle);
+  --background-content: var(--alpha-background-strong);
+  --background-media: var(--alpha-background-subtle);
 
   --heading-font-family: var(--content-font-family);
 
@@ -206,7 +206,7 @@ img {
   padding-left: var(--miniature-title-padding);
   padding-right: var(--miniature-title-padding);
   color: var(--miniature-title-color);
-  background: var(--background-strong);
+  background: var(--alpha-background-strong);
   line-height: var(--miniature-title-height);
   font-size: var(--miniature-title-font-size);
   text-align: center;
@@ -299,7 +299,7 @@ img {
   transform: translateX(calc(var(--medium-width) * -1));
   transition: transform 0s;
   transition-delay: 2s;
-  background: var(--background-subtle);
+  background: var(--alpha-background-subtle);
 }
 
 #projects article .media .caption {
@@ -354,7 +354,7 @@ img {
   transform: translateX(var(--golden-ratio-width-shorter));
   transition: transform 0s;
   transition-delay: 2s;
-  background: var(--background-strong);
+  background: var(--alpha-background-strong);
 }
 
 #projects article .description p {
