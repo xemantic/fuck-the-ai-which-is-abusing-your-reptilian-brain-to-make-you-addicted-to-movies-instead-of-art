@@ -24,3 +24,5 @@ you want. The `projects` folder is only keeping locally stored media referenced 
 ## TODO
 
 * https://helgeklein.com/blog/2020/06/google-analytics-cookieless-tracking-without-gdpr-consent/
+* touch events https://gist.github.com/bencentra/91350fe91c377c1ca574
+* https://markosaric.com/degoogleify/

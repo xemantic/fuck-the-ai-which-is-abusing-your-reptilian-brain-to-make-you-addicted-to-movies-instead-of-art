@@ -1,8 +1,11 @@
 const PROJECT_CLEANUP_DELAY = 3000;
 
-const FLICKITY_DIST = "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js";
-const FLICKITY_CSS_DIST = "https://unpkg.com/flickity@2/dist/flickity.min.css";
-const FLICKITY_BG_LAZY_LOAD_DIST = "https://npmcdn.com/flickity-bg-lazyload@1.0.0/bg-lazyload.js";
+const FLICKITY_VERSION="2.2.1";
+const FLICKITY_BG_LAZY_LOAD_VERSION="1.0.1";
+
+const FLICKITY_DIST = "https://unpkg.com/flickity@" + FLICKITY_VERSION + "/dist/flickity.pkgd.min.js";
+const FLICKITY_CSS_DIST = "https://unpkg.com/flickity@" + FLICKITY_VERSION + "/dist/flickity.min.css";
+const FLICKITY_BG_LAZY_LOAD_DIST = "https://npmcdn.com/flickity-bg-lazyload@" + FLICKITY_BG_LAZY_LOAD_VERSION + "/bg-lazyload.js";
 const FLICKITY_FULLSCREEN_DIST = "https://unpkg.com/flickity-fullscreen@1/fullscreen.js";
 const FLICKITY_FULLSCREEN_CSS_DIST = "https://unpkg.com/flickity-fullscreen@1/fullscreen.css";
 
@@ -194,12 +197,12 @@ function cleanUpMedia(media) {
 Promise.all(
   [
     loadJs(FLICKITY_DIST).then(() => Promise.all([
-      loadJs(FLICKITY_FULLSCREEN_DIST),
+      //loadJs(FLICKITY_FULLSCREEN_DIST),
       loadJs(FLICKITY_BG_LAZY_LOAD_DIST)
     ])),
     loadJs(VIMEO_DIST),
     loadCss(FLICKITY_CSS_DIST),
-    loadCss(FLICKITY_FULLSCREEN_CSS_DIST)
+    //loadCss(FLICKITY_FULLSCREEN_CSS_DIST)
   ].concat(
     scriptsToLoad.map(x => {
       loadJs(x[0], x[1]);
