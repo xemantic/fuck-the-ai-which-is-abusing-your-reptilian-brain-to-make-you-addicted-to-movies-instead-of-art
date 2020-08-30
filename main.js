@@ -6,10 +6,7 @@ const FLICKITY_BG_LAZY_LOAD_VERSION="1.0.1";
 const FLICKITY_DIST = "https://unpkg.com/flickity@" + FLICKITY_VERSION + "/dist/flickity.pkgd.min.js";
 const FLICKITY_CSS_DIST = "https://unpkg.com/flickity@" + FLICKITY_VERSION + "/dist/flickity.min.css";
 const FLICKITY_BG_LAZY_LOAD_DIST = "https://npmcdn.com/flickity-bg-lazyload@" + FLICKITY_BG_LAZY_LOAD_VERSION + "/bg-lazyload.js";
-const FLICKITY_FULLSCREEN_DIST = "https://unpkg.com/flickity-fullscreen@1/fullscreen.js";
-const FLICKITY_FULLSCREEN_CSS_DIST = "https://unpkg.com/flickity-fullscreen@1/fullscreen.css";
 
-// TODO vimeo support should be conditional
 const VIMEO_DIST = "https://player.vimeo.com/api/player.js";
 
 const imageLoadHandler = (event) => {
@@ -36,6 +33,17 @@ function show(element) {
   element.classList.remove("hidden");
   element.classList.add("fade-in");
 }
+
+function preload(href, type) {
+  const link = document.createElement("link");
+  link.rel = "preload";
+  link.href = href;
+  link.as = type;
+  document.head.appendChild(link);
+}
+
+const preloadScript = (src) => preload(src, "script");
+const preloadCss = (src) => preload(src, "style");
 
 const loadJs = (src, extender) => new Promise((resolve, reject) => {
   const script = document.createElement("script");
@@ -194,19 +202,30 @@ function cleanUpMedia(media) {
   });
 }
 
-Promise.all(
-  [
-    loadJs(FLICKITY_DIST).then(() => Promise.all([
-      //loadJs(FLICKITY_FULLSCREEN_DIST),
-      loadJs(FLICKITY_BG_LAZY_LOAD_DIST)
-    ])),
-    loadJs(VIMEO_DIST),
-    loadCss(FLICKITY_CSS_DIST),
-    //loadCss(FLICKITY_FULLSCREEN_CSS_DIST)
-  ].concat(
-    scriptsToLoad.map(x => {
-      loadJs(x[0], x[1]);
-    }),
-    cssToLoad.map(src => loadCss(src))
-  )
-).then(() => initialize());
+const flickityExtraScripts = [FLICKITY_BG_LAZY_LOAD_DIST];
+const flickityExtraCss = [];
+
+flickityExtraScripts.forEach(src => preloadScript(src));
+flickityExtraCss.forEach(src => preloadCss(src));
+
+if (fuckTheAiConfig) {
+  if (fuckTheAiConfig.useVimeo) {
+    addScript(VIMEO_DIST);
+  }
+}
+
+Promise.all([
+  loadJs(FLICKITY_DIST).then(() => Promise.all(
+    flickityExtraScripts.map(src => loadJs(src))
+       .concat(flickityExtraCss.map(src => loadCss(src)))
+  )),
+  loadCss(FLICKITY_CSS_DIST)
+].concat(
+  scriptsToLoad.map(x => loadJs(x[0], x[1])),
+  cssToLoad.map(src => loadCss(src))
+))
+.then(() => initialize())
+.then(() => scriptsToPostLoad ?
+  Promise.all(scriptsToPostLoad.map(x => loadJs(x[0], x[1])))
+  : Promise.resolve()
+);
