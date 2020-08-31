@@ -110,12 +110,14 @@ function initialize() {
     const project = projects.querySelector(hash);
     if (!project) return;
     flickityMiniatures.selectCell("[href='" + hash + "']");
-    const height = project.clientHeight + "px";
-    initializeProject(project);
-    projects.style.height = height;
-    projectExpander.style.height = height;
     projectCleaner(selectedProject);
     selectedProject = project;
+    initializeProject(project);
+    setTimeout(() => {
+      const height = project.clientHeight + "px";
+      projects.style.height = height;
+      projectExpander.style.height = height;
+    }, 100);
   };
   window.addEventListener("hashchange", hashChangeHandler, false);
 
