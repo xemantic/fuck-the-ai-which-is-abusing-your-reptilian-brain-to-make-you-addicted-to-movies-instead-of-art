@@ -210,7 +210,7 @@ const flickityExtraCss = [];
 flickityExtraScripts.forEach(src => preloadScript(src));
 flickityExtraCss.forEach(src => preloadCss(src));
 
-if (fuckTheAiConfig) {
+if (typeof fuckTheAiConfig !== 'undefined') {
   if (fuckTheAiConfig.useVimeo) {
     addScript(VIMEO_DIST);
   }
